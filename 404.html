@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>个人主页</title>
+    <script>
+      // 404 时重定向到首页（HashRouter 兼容）
+      var l = window.location;
+      var base = l.pathname.replace(/[^/]*$/, '');
+      l.replace(base + '#' + l.pathname + l.search);
+    </script>
+  </head>
+  <body>
+    <p>正在跳转...</p>
+  </body>
+</html>
