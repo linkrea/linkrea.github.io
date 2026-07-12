@@ -54,27 +54,27 @@
       "id": "e1",
       "school": "清华大学",
       "degree": "博士",
-      "major": "电子信息",
-      "startDate": "",
-      "endDate": "",
-      "description": ""
+      "major": "",
+      "startDate": "2019.09",
+      "endDate": "2024.12",
+      "description": "研究方向：智能计算"
     },
     {
       "id": "e2",
       "school": "北京邮电大学",
       "degree": "硕士",
       "major": "",
-      "startDate": "",
-      "endDate": "",
-      "description": ""
+      "startDate": "2013.03",
+      "endDate": "2018.06",
+      "description": "研究方向：云计算"
     },
     {
       "id": "mrhlsqt31x4eer",
       "school": "南京大学",
       "degree": "本科",
       "major": "",
-      "startDate": "",
-      "endDate": "",
+      "startDate": "1994.09",
+      "endDate": "1998.06",
       "description": ""
     }
   ],
