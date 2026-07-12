@@ -252,11 +252,6 @@
     "location": "中国 · 广州市天河区黄埔大道西666号",
     "socialLinks": [
       {
-        "id": "s1",
-        "platform": "GitHub",
-        "url": "https://github.com/cnc2002"
-      },
-      {
         "id": "s2",
         "platform": "Google Scholar",
         "url": "https://scholar.google.com/citations?user=OfJQTqkAAAAJ&hl=zh-CN&authuser=1"
