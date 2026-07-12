@@ -219,8 +219,8 @@
       "name": "腾讯广州AIDC项目",
       "role": "项目负责人",
       "techStack": "",
-      "startDate": "2026-06",
-      "endDate": "2027-04",
+      "startDate": "2026.06",
+      "endDate": "2027.04",
       "description": "为腾讯在广州黄埔提供93MW AIDC基础设施。",
       "url": ""
     },
@@ -229,18 +229,18 @@
       "name": "腾讯韶关AIDC项目",
       "role": "项目负责人",
       "techStack": "",
-      "startDate": "2025-12",
-      "endDate": "2027-04",
+      "startDate": "2025.12",
+      "endDate": "2027.04",
       "description": "为腾讯在韶关浈江提供100MW AIDC基础设施。",
       "url": ""
     },
     {
       "id": "mrh64xv4k4er0l",
-      "name": "广州市统一安全运营项目",
+      "name": "广州市统一安全运营项目（一期）",
       "role": "项目负责人",
       "techStack": "",
-      "startDate": "2023-02",
-      "endDate": "2026-05",
+      "startDate": "2023.02",
+      "endDate": "2023.05",
       "description": "为广州市各委办局提供统一安全运营服务。",
       "url": ""
     },
@@ -249,9 +249,9 @@
       "name": "广东省政务云建设运营项目（一期）",
       "role": "项目负责人",
       "techStack": "",
-      "startDate": "2018-01",
-      "endDate": "2019-02",
-      "description": "为广东省政数局提供政务云服务。",
+      "startDate": "2018.01",
+      "endDate": "2019.02",
+      "description": "为广东省各委办局提供政务云服务。",
       "url": ""
     }
   ],
