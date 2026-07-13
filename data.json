@@ -85,7 +85,7 @@
         "name": "基于星罗的粤港澳大湾区异构算力任务编排协同系统研究及应用",
         "role": "项目负责人",
         "fundingSource": "中国联通核心技术攻关项目",
-        "budget": "182万元",
+        "budget": "",
         "startDate": "2025.10",
         "endDate": "2026.12",
         "description": "构建基于\"星罗\"算力平台的跨域任务编排系统，实现异构算力资源的统一纳管与智能调度。"
@@ -105,7 +105,7 @@
         "name": "国家人工智能应用中试基地项目（消费领域移动终端方向）",
         "role": "算力课题负责人",
         "fundingSource": "国家发改委",
-        "budget": "2亿元+",
+        "budget": "",
         "startDate": "2025.10",
         "endDate": "2027.12",
         "description": "负责AI算力基础设施规划、建设，以及算力与终端应用场景深度融合。"
@@ -221,7 +221,7 @@
       "techStack": "",
       "startDate": "2026.06",
       "endDate": "2027.04",
-      "description": "为腾讯在广州黄埔区中新知识城提供93MW AIDC基础设施。",
+      "description": "为腾讯在广州黄埔提供93MW AIDC基础设施。",
       "url": ""
     },
     {
@@ -231,7 +231,7 @@
       "techStack": "",
       "startDate": "2025.12",
       "endDate": "2027.04",
-      "description": "为腾讯在韶关浈江区提供100MW AIDC基础设施。",
+      "description": "为腾讯在韶关浈江提供100MW AIDC基础设施。",
       "url": ""
     },
     {
