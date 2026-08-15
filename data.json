@@ -95,14 +95,16 @@
     {
       "id": 1786808208027,
       "title": "跨境算力专区",
-      "description": "",
+      "description": "在韶关、汕头分别建设独立隔离的专区算力集群，开展“来数加工”业务，服务于中资企业出海。使用内地低价电力、IDC资源降低Token成本，提升出海竞争力，满足公域、私域、token工厂等需求。",
       "leader": "刘惜吾",
       "status": "进行中",
       "startDate": "2026-06",
       "endDate": "2027-06",
       "progress": 50,
-      "image": "",
-      "tags": []
+      "image": "./image/project3.jpg",
+      "tags": [
+        "算力专区，跨境专线，Token运营"
+      ]
     }
   ]
 }
