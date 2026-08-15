@@ -183,7 +183,7 @@ function animateParticles() {
 }
 animateParticles();
 
-// ==================== Default Data Template ====================
+// ==================== Default Data ====================
 const defaultData = {
     about: {
         title: "关于我们",
@@ -303,7 +303,7 @@ const defaultData = {
     ]
 };
 
-// ==================== GitHub-only Data Store ====================
+// ==================== GitHub Data Store ====================
 const store = {
     data: JSON.parse(JSON.stringify(defaultData)),
     github: { token: '', owner: '', repo: '', path: 'data.json' },
@@ -322,12 +322,17 @@ const store = {
         localStorage.setItem('ccn_github', JSON.stringify(this.github));
     },
 
+    clearConfig() {
+        this.github = { token: '', owner: '', repo: '', path: 'data.json' };
+        localStorage.removeItem('ccn_github');
+    },
+
     getApiUrl() {
         return `https://api.github.com/repos/${this.github.owner}/${this.github.repo}/contents/${this.github.path}`;
     },
 
     async syncToGitHub() {
-        if (!this.isConfigured()) throw new Error('GitHub 配置不完整');
+        if (!this.isConfigured()) throw new Error('GitHub 未配置');
         this.isLoading = true;
         try {
             const content = btoa(unescape(encodeURIComponent(JSON.stringify(this.data, null, 2))));
@@ -352,13 +357,12 @@ const store = {
     },
 
     async loadFromGitHub() {
-        if (!this.isConfigured()) throw new Error('GitHub 配置不完整');
+        if (!this.isConfigured()) throw new Error('GitHub 未配置');
         this.isLoading = true;
         try {
             const apiUrl = this.getApiUrl();
             const res = await fetch(apiUrl, { headers: { 'Authorization': `token ${this.github.token}` } });
             if (res.status === 404) {
-                // 文件不存在，使用默认数据并自动创建
                 await this.syncToGitHub();
                 return { created: true };
             }
@@ -378,8 +382,8 @@ store.init();
 function showToast(message, type = 'success') {
     const container = document.getElementById('toastContainer');
     const toast = document.createElement('div');
-    const colors = { success: 'bg-green-500', error: 'bg-red-500', info: 'bg-blue-500' };
-    const icons = { success: 'fa-check-circle', error: 'fa-exclamation-circle', info: 'fa-info-circle' };
+    const colors = { success: 'bg-green-500', error: 'bg-red-500', info: 'bg-blue-500', warning: 'bg-yellow-500' };
+    const icons = { success: 'fa-check-circle', error: 'fa-exclamation-circle', info: 'fa-info-circle', warning: 'fa-exclamation-triangle' };
     toast.className = `toast ${colors[type]} text-white px-4 py-3 rounded-lg shadow-lg flex items-center space-x-2 min-w-[200px]`;
     toast.innerHTML = `<i class="fas ${icons[type]}"></i><span>${message}</span>`;
     container.appendChild(toast);
@@ -399,13 +403,6 @@ const router = {
         const app = document.getElementById('app');
         const route = window.location.hash.slice(1) || 'home';
         this.currentRoute = route;
-
-        // 未配置 GitHub 时，除 admin 页面外都显示配置引导
-        if (!store.isConfigured() && route !== 'admin') {
-            app.innerHTML = renderConfigGuide();
-            return;
-        }
-
         switch(route) {
             case 'home': app.innerHTML = renderHome(); break;
             case 'about': app.innerHTML = renderAbout(); break;
@@ -415,7 +412,6 @@ const router = {
             case 'admin': app.innerHTML = renderAdmin(); break;
             default: app.innerHTML = renderHome();
         }
-
         document.querySelectorAll('.nav-link').forEach(el => {
             const isActive = el.dataset.route === route || (route === '' && el.dataset.route === 'home');
             el.classList.toggle('active', isActive);
@@ -426,102 +422,6 @@ const router = {
 
 function toggleMobileMenu() {
     document.getElementById('mobileMenu').classList.toggle('hidden');
-}
-
-// ==================== Config Guide Page ====================
-function renderConfigGuide() {
-    return `
-    <div class="min-h-[80vh] flex items-center justify-center px-4 animate-fade-in">
-        <div class="max-w-2xl w-full">
-            <div class="glass rounded-2xl p-8 md:p-12 text-center">
-                <div class="w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center mx-auto mb-6">
-                    <i class="fab fa-github text-white text-3xl"></i>
-                </div>
-                <h1 class="text-3xl font-bold mb-4">首次使用配置</h1>
-                <p class="text-gray-400 mb-8 leading-relaxed">
-                    本网站使用 <strong>GitHub 云端同步</strong> 作为唯一的数据存储方案。<br>
-                    所有内容（新闻、团队、项目）均保存在你的 GitHub 仓库中，实现永久存储与多人协作。
-                </p>
-
-                <div class="text-left glass rounded-xl p-6 mb-8 border border-blue-500/20">
-                    <h3 class="font-bold mb-4 text-blue-400"><i class="fas fa-key mr-2"></i>配置 GitHub 访问凭证</h3>
-                    <div class="space-y-4">
-                        <div>
-                            <label class="block text-sm text-gray-400 mb-2">GitHub Personal Access Token <span class="text-red-400">*</span></label>
-                            <input type="password" id="cfgToken" placeholder="ghp_xxxxxxxxxxxxxxxx" class="admin-input w-full px-4 py-3 rounded-lg text-white text-sm">
-                            <p class="text-xs text-gray-600 mt-1">在 GitHub Settings → Developer settings → Personal access tokens (classic) 生成，需勾选 <strong>repo</strong> 权限</p>
-                        </div>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-sm text-gray-400 mb-2">仓库所有者 <span class="text-red-400">*</span></label>
-                                <input type="text" id="cfgOwner" placeholder="你的GitHub用户名" class="admin-input w-full px-4 py-3 rounded-lg text-white text-sm">
-                            </div>
-                            <div>
-                                <label class="block text-sm text-gray-400 mb-2">仓库名称 <span class="text-red-400">*</span></label>
-                                <input type="text" id="cfgRepo" placeholder="如: ccn-team-website" class="admin-input w-full px-4 py-3 rounded-lg text-white text-sm">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button onclick="saveInitialConfig()" class="btn-primary px-8 py-3 rounded-lg font-medium text-white">
-                        <i class="fas fa-plug mr-2"></i>连接并初始化
-                    </button>
-                    <button onclick="toggleTokenHelp()" class="px-8 py-3 rounded-lg font-medium border border-white/20 hover:bg-white/5 transition text-white text-sm">
-                        <i class="fas fa-question-circle mr-2"></i>如何获取 Token？
-                    </button>
-                </div>
-
-                <div id="tokenHelp" class="hidden mt-6 text-left glass rounded-xl p-6 text-sm text-gray-400">
-                    <h4 class="font-bold text-white mb-3">获取 GitHub Token 步骤：</h4>
-                    <ol class="space-y-2 list-decimal list-inside">
-                        <li>登录 GitHub，点击右上角头像 → <strong>Settings</strong></li>
-                        <li>页面底部左侧 → <strong>Developer settings</strong></li>
-                        <li><strong>Personal access tokens</strong> → <strong>Tokens (classic)</strong></li>
-                        <li>点击 <strong>Generate new token (classic)</strong></li>
-                        <li>Note 填写：CCN Website Admin，Expiration 选择 <strong>No expiration</strong></li>
-                        <li>勾选范围中 <strong>repo</strong> 选项（完整控制仓库）</li>
-                        <li>点击 <strong>Generate token</strong>，<span class="text-yellow-400">立即复制 Token</span>（页面关闭后不可再次查看）</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </div>`;
-}
-
-function toggleTokenHelp() {
-    document.getElementById('tokenHelp').classList.toggle('hidden');
-}
-
-async function saveInitialConfig() {
-    const token = document.getElementById('cfgToken').value.trim();
-    const owner = document.getElementById('cfgOwner').value.trim();
-    const repo = document.getElementById('cfgRepo').value.trim();
-
-    if (!token || !owner || !repo) {
-        showToast('请填写所有必填项', 'error');
-        return;
-    }
-
-    store.github = { token, owner, repo, path: 'data.json' };
-    store.saveConfig();
-
-    showToast('正在连接 GitHub...', 'info');
-    try {
-        const result = await store.loadFromGitHub();
-        if (result.created) {
-            showToast('已创建 data.json 并初始化默认数据');
-        } else {
-            showToast('已成功从 GitHub 加载数据');
-        }
-        router.render();
-    } catch(e) {
-        showToast('连接失败: ' + e.message, 'error');
-        // 回滚配置
-        store.github = { token: '', owner: '', repo: '', path: 'data.json' };
-        store.saveConfig();
-    }
 }
 
 // ==================== Frontend Views ====================
@@ -748,11 +648,6 @@ let isAdminLoggedIn = false;
 const ADMIN_PASSWORD = 'admin123';
 
 function renderAdmin() {
-    // 未配置 GitHub 时，在管理后台也显示配置引导
-    if (!store.isConfigured()) {
-        return renderConfigGuide();
-    }
-
     if (!isAdminLoggedIn) {
         return `
         <div class="min-h-screen flex items-center justify-center px-4">
@@ -958,36 +853,38 @@ function renderAdminAbout() {
                 <textarea id="aboutContent" rows="10" class="admin-input w-full px-4 py-2 rounded-lg text-white">${about.content}</textarea>
             </div>
             <div class="pt-4">
-                <button onclick="saveAbout()" class="btn-primary px-6 py-2 rounded-lg text-white"><i class="fas fa-save mr-2"></i>保存并推送</button>
+                <button onclick="saveAbout()" class="btn-primary px-6 py-2 rounded-lg text-white"><i class="fas fa-save mr-2"></i>保存</button>
             </div>
         </div>
     </div>`;
 }
 
 function renderAdminSettings() {
+    const isCfg = store.isConfigured();
     return `
     <div class="max-w-3xl mx-auto">
         <h2 class="text-2xl font-bold mb-6">GitHub 云端配置</h2>
 
-        <div class="glass rounded-xl p-6 mb-6 border border-blue-500/20">
+        <div class="glass rounded-xl p-6 mb-6 ${isCfg ? 'border border-green-500/20' : 'border border-yellow-500/20'}">
             <div class="flex items-center mb-4">
-                <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center mr-3">
-                    <i class="fas fa-check-circle text-green-400"></i>
+                <div class="w-10 h-10 rounded-full ${isCfg ? 'bg-green-500/20' : 'bg-yellow-500/20'} flex items-center justify-center mr-3">
+                    <i class="fas ${isCfg ? 'fa-check-circle text-green-400' : 'fa-exclamation-triangle text-yellow-400'}"></i>
                 </div>
                 <div>
                     <h3 class="font-bold">连接状态</h3>
-                    <p class="text-sm text-gray-400">已连接到 ${store.github.owner}/${store.github.repo}</p>
+                    <p class="text-sm text-gray-400">${isCfg ? `已连接到 ${store.github.owner}/${store.github.repo}` : '未配置 GitHub，数据仅保存在当前会话中'}</p>
                 </div>
             </div>
+            ${!isCfg ? `<p class="text-sm text-yellow-400/80 mt-2"><i class="fas fa-info-circle mr-1"></i>未配置 GitHub 时，所有修改仅在当前页面有效，刷新后将恢复为默认数据。</p>` : ''}
         </div>
 
         <div class="glass rounded-xl p-6">
-            <h3 class="font-bold mb-4 flex items-center"><i class="fab fa-github mr-2 text-white"></i>修改 GitHub 配置</h3>
+            <h3 class="font-bold mb-4 flex items-center"><i class="fab fa-github mr-2 text-white"></i>${isCfg ? '修改 GitHub 配置' : '配置 GitHub 同步'}</h3>
             <div class="space-y-4">
                 <div>
                     <label class="block text-sm text-gray-400 mb-2">GitHub Personal Access Token</label>
                     <input type="password" id="ghToken" value="${store.github.token}" placeholder="ghp_xxxxxxxx" class="admin-input w-full px-4 py-2 rounded-lg text-white text-sm">
-                    <p class="text-xs text-gray-600 mt-1">在 GitHub Settings → Developer settings → Personal access tokens (classic) 生成，需勾选 repo 权限</p>
+                    <p class="text-xs text-gray-600 mt-1">在 GitHub Settings → Developer settings → Personal access tokens (classic) 生成，需勾选 <strong>repo</strong> 权限</p>
                 </div>
                 <div class="grid grid-cols-2 gap-4">
                     <div>
@@ -1003,23 +900,27 @@ function renderAdminSettings() {
                     <button onclick="saveGitHubConfig()" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition text-sm">
                         <i class="fas fa-save mr-2"></i>保存配置
                     </button>
+                    ${isCfg ? `
                     <button onclick="syncToGitHub()" class="px-4 py-2 rounded-lg btn-primary text-white text-sm">
                         <i class="fas fa-cloud-upload-alt mr-2"></i>推送当前数据至 GitHub
                     </button>
                     <button onclick="loadFromGitHub()" class="px-4 py-2 rounded-lg bg-purple-500/20 text-purple-400 hover:bg-purple-500/30 transition text-sm">
                         <i class="fas fa-cloud-download-alt mr-2"></i>从 GitHub 拉取最新数据
                     </button>
+                    ` : ''}
                 </div>
             </div>
         </div>
 
+        ${isCfg ? `
         <div class="glass rounded-xl p-6 mt-6">
             <h3 class="font-bold mb-4 flex items-center"><i class="fas fa-exclamation-triangle mr-2 text-yellow-400"></i>重置配置</h3>
-            <p class="text-sm text-gray-400 mb-4">清除当前 GitHub 配置，回到初始引导页面。此操作不会删除 GitHub 上的数据。</p>
+            <p class="text-sm text-gray-400 mb-4">清除当前 GitHub 配置。此操作不会删除 GitHub 上的数据。</p>
             <button onclick="resetConfig()" class="px-4 py-2 rounded-lg bg-red-500/20 text-red-400 hover:bg-red-500/30 transition text-sm">
                 <i class="fas fa-trash mr-2"></i>清除配置
             </button>
         </div>
+        ` : ''}
     </div>`;
 }
 
@@ -1047,10 +948,8 @@ function switchAdminTab(tab) {
 }
 
 function resetConfig() {
-    if (!confirm('确定要清除 GitHub 配置吗？网站将回到初始引导状态，GitHub 上的数据不会被删除。')) return;
-    store.github = { token: '', owner: '', repo: '', path: 'data.json' };
-    store.saveConfig();
-    isAdminLoggedIn = false;
+    if (!confirm('确定要清除 GitHub 配置吗？此操作不会删除 GitHub 上的数据。')) return;
+    store.clearConfig();
     router.render();
     showToast('配置已清除');
 }
@@ -1125,7 +1024,7 @@ function openModal(type, id = null) {
             <div class="p-6">${fields}</div>
             <div class="p-6 border-t border-white/5 flex justify-end space-x-3">
                 <button onclick="closeModal()" class="px-4 py-2 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5 transition">取消</button>
-                <button onclick="saveItem()" class="btn-primary px-6 py-2 rounded-lg text-sm text-white"><i class="fas fa-save mr-2"></i>保存并推送</button>
+                <button onclick="saveItem()" class="btn-primary px-6 py-2 rounded-lg text-sm text-white"><i class="fas fa-save mr-2"></i>保存</button>
             </div>
         </div>
     `;
@@ -1186,13 +1085,17 @@ async function saveItem() {
 
     closeModal();
     router.render();
-    showToast('正在推送至 GitHub...', 'info');
 
-    try {
-        await store.syncToGitHub();
-        showToast(id ? '修改已同步至 GitHub' : '添加已同步至 GitHub');
-    } catch(e) {
-        showToast('GitHub 同步失败: ' + e.message, 'error');
+    if (store.isConfigured()) {
+        showToast('正在推送至 GitHub...', 'info');
+        try {
+            await store.syncToGitHub();
+            showToast(id ? '修改已同步至 GitHub' : '添加已同步至 GitHub');
+        } catch(e) {
+            showToast('GitHub 同步失败: ' + e.message, 'error');
+        }
+    } else {
+        showToast('已保存（未配置 GitHub，刷新后数据将丢失）', 'warning');
     }
 }
 
@@ -1204,12 +1107,17 @@ async function deleteItem(type, id) {
     if (!confirm('确定要删除这条记录吗？此操作不可恢复。')) return;
     store.data[type] = store.data[type].filter(x => x.id !== id);
     router.render();
-    showToast('正在推送至 GitHub...', 'info');
-    try {
-        await store.syncToGitHub();
-        showToast('删除已同步至 GitHub');
-    } catch(e) {
-        showToast('GitHub 同步失败: ' + e.message, 'error');
+
+    if (store.isConfigured()) {
+        showToast('正在推送至 GitHub...', 'info');
+        try {
+            await store.syncToGitHub();
+            showToast('删除已同步至 GitHub');
+        } catch(e) {
+            showToast('GitHub 同步失败: ' + e.message, 'error');
+        }
+    } else {
+        showToast('已删除（未配置 GitHub，刷新后数据将丢失）', 'warning');
     }
 }
 
@@ -1217,12 +1125,17 @@ async function saveAbout() {
     store.data.about.title = document.getElementById('aboutTitle').value;
     store.data.about.subtitle = document.getElementById('aboutSubtitle').value;
     store.data.about.content = document.getElementById('aboutContent').value;
-    showToast('正在推送至 GitHub...', 'info');
-    try {
-        await store.syncToGitHub();
-        showToast('保存已同步至 GitHub');
-    } catch(e) {
-        showToast('GitHub 同步失败: ' + e.message, 'error');
+
+    if (store.isConfigured()) {
+        showToast('正在推送至 GitHub...', 'info');
+        try {
+            await store.syncToGitHub();
+            showToast('保存已同步至 GitHub');
+        } catch(e) {
+            showToast('GitHub 同步失败: ' + e.message, 'error');
+        }
+    } else {
+        showToast('已保存（未配置 GitHub，刷新后数据将丢失）', 'warning');
     }
 }
 
@@ -1231,6 +1144,7 @@ function saveGitHubConfig() {
     store.github.owner = document.getElementById('ghOwner').value;
     store.github.repo = document.getElementById('ghRepo').value;
     store.saveConfig();
+    router.render();
     showToast('配置已保存');
 }
 
@@ -1258,12 +1172,10 @@ async function loadFromGitHub() {
 // ==================== Init ====================
 window.addEventListener('hashchange', () => router.render());
 window.addEventListener('DOMContentLoaded', () => {
-    // 如果已配置 GitHub，尝试自动加载数据
     if (store.isConfigured()) {
         store.loadFromGitHub().then(() => {
             router.render();
         }).catch(() => {
-            // 加载失败仍使用默认数据
             router.render();
         });
     } else {
