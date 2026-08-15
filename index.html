@@ -190,7 +190,7 @@ const defaultData = {
     about: {
         title: "关于我们",
         subtitle: "引领云计算与算力网络技术创新",
-        content: `我们是一支专注于云计算及算力网络领域的前沿技术研发团队，致力于构建高效、智能、安全的下一代网络基础设施。\n\n团队依托国家级重点实验室，在算力路由、边缘计算、云网融合等方向取得了系列原创性成果。我们秉承"开放、协作、创新、卓越"的理念，汇聚了一批来自国内外顶尖高校和企业的优秀人才。\n\n我们的使命是通过技术创新，推动算力成为像水电一样便捷可得的社会级服务，赋能千行百业的数字化转型。`,
+        content: `我们是一支专注于云计算及算力网络领域的前沿技术研发团队，致力于构建高效、智能、安全的下一代网络基础设施。\n\n我们的使命是通过技术创新，推动算力成为像水电一样便捷可得，赋能千行百业的数字化转型。`,
         stats: [
             { label: "核心成员", value: "50+", icon: "fa-users" },
             { label: "科研项目", value: "120+", icon: "fa-flask" },
@@ -580,7 +580,7 @@ function renderTeam() {
     <div class="animate-fade-in max-w-6xl mx-auto px-4 py-12">
         <div class="text-center mb-12">
             <h1 class="text-4xl font-bold text-gradient mb-4">专家团队</h1>
-            <p class="text-gray-400">汇聚国内外顶尖高校与企业的优秀人才</p>
+            <p class="text-gray-400">汇聚企业优秀人才</p>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             ${store.data.team.map(m => `
@@ -606,7 +606,7 @@ function renderProjects() {
     <div class="animate-fade-in max-w-6xl mx-auto px-4 py-12">
         <div class="text-center mb-12">
             <h1 class="text-4xl font-bold text-gradient mb-4">研发项目</h1>
-            <p class="text-gray-400">聚焦算力网络核心技术攻关与系统研发</p>
+            <p class="text-gray-400">聚焦算力网络核心技术攻关</p>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             ${store.data.projects.map(p => `
@@ -645,7 +645,7 @@ function renderProjects() {
 // ==================== Admin Panel ====================
 let adminTab = 'news';
 let isAdminLoggedIn = false;
-const ADMIN_PASSWORD = 'admin123';
+const ADMIN_PASSWORD = 'unicom123';
 
 function renderAdmin() {
     if (!isAdminLoggedIn) {
@@ -665,7 +665,7 @@ function renderAdmin() {
                         <i class="fas fa-sign-in-alt mr-2"></i>登录
                     </button>
                 </div>
-                <p class="text-center text-xs text-gray-600 mt-6">默认密码: admin123</p>
+                <p class="text-center text-xs text-gray-600 mt-6">算力网络，连通梦想</p>
             </div>
         </div>`;
     }
