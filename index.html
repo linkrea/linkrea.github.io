@@ -70,7 +70,6 @@
     <canvas id="particles"></canvas>
     <div id="toastContainer" class="fixed top-4 right-4 z-50 space-y-2"></div>
 
-    <!-- Navigation -->
     <nav class="fixed top-0 w-full z-40 glass-strong border-b border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
@@ -183,133 +182,35 @@ function animateParticles() {
 }
 animateParticles();
 
-// ==================== Default Data ====================
-const defaultData = {
-    about: {
-        title: "关于我们",
-        subtitle: "引领云计算与算力网络技术创新",
-        content: "我们是一支专注于云计算及算力网络领域的前沿技术研发团队，致力于构建高效、智能、安全的下一代网络基础设施。\n\n团队依托国家级重点实验室，在算力路由、边缘计算、云网融合等方向取得了系列原创性成果。我们秉承\"开放、协作、创新、卓越\"的理念，汇聚了一批来自国内外顶尖高校和企业的优秀人才。\n\n我们的使命是通过技术创新，推动算力成为像水电一样便捷可得的社会级服务，赋能千行百业的数字化转型。",
-        stats: [
-            { label: "核心成员", value: "50+", icon: "fa-users" },
-            { label: "科研项目", value: "120+", icon: "fa-flask" },
-            { label: "发表论文", value: "300+", icon: "fa-file-alt" },
-            { label: "专利授权", value: "80+", icon: "fa-certificate" }
-        ]
-    },
-    news: [
-        {
-            id: 1,
-            title: "我团队研究成果入选NSDI 2026",
-            date: "2026-08-10",
-            category: "学术成果",
-            summary: "团队提出的\"算力感知路由协议\"被计算机网络顶级会议NSDI 2026录用为长文。",
-            content: "该研究针对当前算力网络中资源调度效率低下的问题，提出了一种新型的算力感知路由协议，实现了计算任务与网络路径的协同优化。",
-            image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=400&fit=crop"
-        },
-        {
-            id: 2,
-            title: "与华为云签署战略合作协议",
-            date: "2026-07-22",
-            category: "合作动态",
-            summary: "双方将在算力网络、边缘智能等领域展开深度合作，共建联合实验室。",
-            content: "今日，我团队与华为云正式签署战略合作协议，双方将围绕算力网络架构、边缘智能平台等方向开展联合攻关。",
-            image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=400&fit=crop"
-        },
-        {
-            id: 3,
-            title: "算力网络试验网正式开通",
-            date: "2026-06-15",
-            category: "项目进展",
-            summary: "覆盖京津冀、长三角、粤港澳的算力网络试验网完成部署并正式开通运行。",
-            content: "经过两年的建设，算力网络试验网今日正式开通，实现了跨地域算力资源的统一调度与编排。",
-            image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&h=400&fit=crop"
-        }
-    ],
-    team: [
-        {
-            id: 1,
-            name: "张明远",
-            title: "团队负责人 / 首席科学家",
-            photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
-            bio: "国家杰出青年基金获得者，IEEE Fellow。长期从事云计算、算力网络研究，主持国家重点研发计划项目3项。",
-            research: "算力网络架构、云网融合",
-            email: "zhangmy@example.edu.cn"
-        },
-        {
-            id: 2,
-            name: "李思涵",
-            title: "技术总监 / 教授",
-            photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
-            bio: "博士生导师，CCF杰出会员。主要研究方向为边缘计算、分布式系统，在TON、JSAC等期刊发表论文50余篇。",
-            research: "边缘计算、分布式系统",
-            email: "lish@example.edu.cn"
-        },
-        {
-            id: 3,
-            name: "王浩然",
-            title: "高级工程师",
-            photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-            bio: "博士，专注于网络功能虚拟化与SDN技术研究，主导开发了多个开源网络虚拟化平台。",
-            research: "NFV、SDN、网络虚拟化",
-            email: "wanghr@example.edu.cn"
-        },
-        {
-            id: 4,
-            name: "陈雨薇",
-            title: "青年研究员",
-            photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face",
-            bio: "博士，研究方向为AI驱动的网络资源调度。获ACM SIGCOMM最佳论文提名，主持国家自然科学基金青年项目。",
-            research: "AI for Networking、资源调度",
-            email: "chenyw@example.edu.cn"
-        }
-    ],
-    projects: [
-        {
-            id: 1,
-            title: "算网融合操作系统",
-            description: "研发面向算力网络的新一代网络操作系统，实现计算、存储、网络资源的统一调度与编排。",
-            status: "进行中",
-            progress: 75,
-            leader: "张明远",
-            startDate: "2024-01",
-            endDate: "2027-12",
-            image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=400&fit=crop",
-            tags: ["操作系统", "云原生", "调度算法"]
-        },
-        {
-            id: 2,
-            title: "边缘智能推理平台",
-            description: "构建支持多模态大模型分布式推理的边缘计算平台，实现低延迟、高并发的AI推理服务。",
-            status: "进行中",
-            progress: 60,
-            leader: "李思涵",
-            startDate: "2025-03",
-            endDate: "2026-12",
-            image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&h=400&fit=crop",
-            tags: ["边缘计算", "AI推理", "大模型"]
-        },
-        {
-            id: 3,
-            title: "广域算力路由协议",
-            description: "设计并实现新型算力感知路由协议，支持跨域算力资源的动态发现与最优路径计算。",
-            status: "已完成",
-            progress: 100,
-            leader: "王浩然",
-            startDate: "2023-06",
-            endDate: "2025-06",
-            image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=400&fit=crop",
-            tags: ["路由协议", "广域网", "算力调度"]
-        }
-    ]
+// ==================== Empty Data Structure ====================
+const emptyData = {
+    about: { title: '关于我们', subtitle: '', content: '', stats: [] },
+    news: [],
+    team: [],
+    projects: []
 };
 
 // ==================== GitHub Data Store ====================
 const store = {
-    data: JSON.parse(JSON.stringify(defaultData)),
+    data: JSON.parse(JSON.stringify(emptyData)),
     github: { token: '', owner: '', repo: '', path: 'data.json' },
+    dataLoaded: false,
     isLoading: false,
 
-    init() {
+    async init() {
+        // 1. 尝试从同域读取 data.json（无需 Token，因为 GitHub Pages 是公开的）
+        try {
+            const res = await fetch('./data.json', { cache: 'no-store' });
+            if (res.ok) {
+                const loaded = await res.json();
+                this.data = loaded;
+                this.dataLoaded = true;
+            }
+        } catch(e) {
+            // data.json 不存在或读取失败，保持空结构
+        }
+
+        // 2. 加载 GitHub 配置（用于写入）
         const gh = localStorage.getItem('ccn_github');
         if (gh) this.github = JSON.parse(gh);
     },
@@ -370,13 +271,13 @@ const store = {
             const fileData = await res.json();
             const content = decodeURIComponent(escape(atob(fileData.content)));
             this.data = JSON.parse(content);
+            this.dataLoaded = true;
             return { created: false };
         } finally {
             this.isLoading = false;
         }
     }
 };
-store.init();
 
 // ==================== Toast ====================
 function showToast(message, type = 'success') {
@@ -424,8 +325,22 @@ function toggleMobileMenu() {
     document.getElementById('mobileMenu').classList.toggle('hidden');
 }
 
+// ==================== Empty State Helper ====================
+function emptyState(icon, title, subtitle) {
+    return `
+    <div class="glass rounded-xl p-12 text-center">
+        <i class="fas ${icon} text-4xl text-gray-600 mb-4"></i>
+        <h3 class="text-lg font-bold text-gray-400 mb-2">${title}</h3>
+        <p class="text-sm text-gray-600">${subtitle}</p>
+    </div>`;
+}
+
 // ==================== Frontend Views ====================
 function renderHome() {
+    const hasStats = store.data.about && store.data.about.stats && store.data.about.stats.length > 0;
+    const hasNews = store.data.news && store.data.news.length > 0;
+    const hasProjects = store.data.projects && store.data.projects.length > 0;
+
     return `
     <div class="animate-fade-in">
         <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
@@ -450,6 +365,7 @@ function renderHome() {
                         <i class="fas fa-info-circle mr-2"></i>了解团队
                     </button>
                 </div>
+                ${hasStats ? `
                 <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
                     ${store.data.about.stats.map(s => `
                         <div class="glass rounded-xl p-4 text-center card-hover">
@@ -459,9 +375,11 @@ function renderHome() {
                         </div>
                     `).join('')}
                 </div>
+                ` : ''}
             </div>
         </section>
 
+        ${hasNews ? `
         <section class="max-w-7xl mx-auto px-4 py-20">
             <div class="flex justify-between items-end mb-10">
                 <div>
@@ -475,20 +393,22 @@ function renderHome() {
             <div class="grid md:grid-cols-3 gap-6">
                 ${store.data.news.slice(0, 3).map(n => `
                     <div class="glass rounded-xl overflow-hidden card-hover cursor-pointer" onclick="router.navigate('news')">
-                        <div class="h-48 bg-cover bg-center" style="background-image: url('${n.image}')"></div>
+                        <div class="h-48 bg-cover bg-center" style="background-image: url('${n.image || ''}')"></div>
                         <div class="p-5">
                             <div class="flex items-center space-x-2 mb-3">
-                                <span class="px-2 py-1 rounded text-xs bg-blue-500/20 text-blue-300">${n.category}</span>
-                                <span class="text-xs text-gray-500">${n.date}</span>
+                                <span class="px-2 py-1 rounded text-xs bg-blue-500/20 text-blue-300">${n.category || '未分类'}</span>
+                                <span class="text-xs text-gray-500">${n.date || ''}</span>
                             </div>
                             <h3 class="font-bold text-lg mb-2 line-clamp-2">${n.title}</h3>
-                            <p class="text-sm text-gray-400 line-clamp-2">${n.summary}</p>
+                            <p class="text-sm text-gray-400 line-clamp-2">${n.summary || ''}</p>
                         </div>
                     </div>
                 `).join('')}
             </div>
         </section>
+        ` : ''}
 
+        ${hasProjects ? `
         <section class="max-w-7xl mx-auto px-4 py-20">
             <div class="flex justify-between items-end mb-10">
                 <div>
@@ -502,39 +422,47 @@ function renderHome() {
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 ${store.data.projects.slice(0, 3).map(p => `
                     <div class="glass rounded-xl overflow-hidden card-hover">
-                        <div class="h-40 bg-cover bg-center" style="background-image: url('${p.image}')"></div>
+                        <div class="h-40 bg-cover bg-center" style="background-image: url('${p.image || ''}')"></div>
                         <div class="p-5">
                             <div class="flex items-center justify-between mb-3">
-                                <span class="px-2 py-1 rounded text-xs ${p.status === '已完成' ? 'bg-green-500/20 text-green-300' : 'bg-blue-500/20 text-blue-300'}">${p.status}</span>
-                                <span class="text-xs text-gray-500">${p.progress}%</span>
+                                <span class="px-2 py-1 rounded text-xs ${p.status === '已完成' ? 'bg-green-500/20 text-green-300' : 'bg-blue-500/20 text-blue-300'}">${p.status || '进行中'}</span>
+                                <span class="text-xs text-gray-500">${p.progress || 0}%</span>
                             </div>
                             <h3 class="font-bold text-lg mb-2">${p.title}</h3>
-                            <p class="text-sm text-gray-400 line-clamp-2 mb-4">${p.description}</p>
+                            <p class="text-sm text-gray-400 line-clamp-2 mb-4">${p.description || ''}</p>
                             <div class="w-full bg-gray-700 rounded-full h-2">
-                                <div class="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full" style="width: ${p.progress}%"></div>
+                                <div class="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full" style="width: ${p.progress || 0}%"></div>
                             </div>
                         </div>
                     </div>
                 `).join('')}
             </div>
         </section>
+        ` : ''}
     </div>`;
 }
 
 function renderAbout() {
+    const about = store.data.about || { title: '关于我们', subtitle: '', content: '', stats: [] };
+    const hasContent = about.content && about.content.trim();
+    const hasStats = about.stats && about.stats.length > 0;
+
     return `
     <div class="animate-fade-in max-w-5xl mx-auto px-4 py-12">
         <div class="text-center mb-16">
-            <h1 class="text-4xl md:text-5xl font-bold text-gradient mb-4">${store.data.about.title}</h1>
-            <p class="text-xl text-gray-400">${store.data.about.subtitle}</p>
+            <h1 class="text-4xl md:text-5xl font-bold text-gradient mb-4">${about.title || '关于我们'}</h1>
+            <p class="text-xl text-gray-400">${about.subtitle || ''}</p>
         </div>
+        ${hasContent ? `
         <div class="glass rounded-2xl p-8 md:p-12 mb-12">
             <div class="max-w-none">
-                ${store.data.about.content.split('\n').filter(p => p.trim()).map(p => `<p class="text-gray-300 leading-relaxed mb-4 text-lg">${p}</p>`).join('')}
+                ${about.content.split('\n').filter(p => p.trim()).map(p => `<p class="text-gray-300 leading-relaxed mb-4 text-lg">${p}</p>`).join('')}
             </div>
         </div>
+        ` : emptyState('fa-info-circle', '暂无内容', '管理员可在后台编辑关于我们页面')}
+        ${hasStats ? `
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-            ${store.data.about.stats.map(s => `
+            ${about.stats.map(s => `
                 <div class="glass rounded-xl p-6 text-center card-hover">
                     <i class="fas ${s.icon} text-3xl text-blue-400 mb-3"></i>
                     <div class="text-3xl font-bold text-white mb-1">${s.value}</div>
@@ -542,103 +470,114 @@ function renderAbout() {
                 </div>
             `).join('')}
         </div>
+        ` : ''}
     </div>`;
 }
 
 function renderNews() {
+    const hasNews = store.data.news && store.data.news.length > 0;
+
     return `
     <div class="animate-fade-in max-w-6xl mx-auto px-4 py-12">
         <div class="text-center mb-12">
             <h1 class="text-4xl font-bold text-gradient mb-4">新闻动态</h1>
             <p class="text-gray-400">团队最新研究成果、学术活动与合作进展</p>
         </div>
+        ${hasNews ? `
         <div class="space-y-6">
             ${store.data.news.map(n => `
                 <div class="glass rounded-xl overflow-hidden card-hover flex flex-col md:flex-row">
-                    <div class="md:w-1/3 h-48 md:h-auto bg-cover bg-center" style="background-image: url('${n.image}')"></div>
+                    <div class="md:w-1/3 h-48 md:h-auto bg-cover bg-center" style="background-image: url('${n.image || ''}')"></div>
                     <div class="p-6 md:w-2/3 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center space-x-3 mb-3">
-                                <span class="px-3 py-1 rounded-full text-xs bg-blue-500/20 text-blue-300">${n.category}</span>
-                                <span class="text-sm text-gray-500"><i class="far fa-calendar-alt mr-1"></i>${n.date}</span>
+                                <span class="px-3 py-1 rounded-full text-xs bg-blue-500/20 text-blue-300">${n.category || '未分类'}</span>
+                                <span class="text-sm text-gray-500"><i class="far fa-calendar-alt mr-1"></i>${n.date || ''}</span>
                             </div>
                             <h3 class="text-xl font-bold mb-3">${n.title}</h3>
-                            <p class="text-gray-400 leading-relaxed">${n.summary}</p>
+                            <p class="text-gray-400 leading-relaxed">${n.summary || ''}</p>
                         </div>
                         <div class="mt-4 pt-4 border-t border-white/5">
-                            <p class="text-sm text-gray-500">${n.content}</p>
+                            <p class="text-sm text-gray-500">${n.content || ''}</p>
                         </div>
                     </div>
                 </div>
             `).join('')}
         </div>
+        ` : emptyState('fa-newspaper', '暂无新闻', '管理员可在后台添加新闻动态')}
     </div>`;
 }
 
 function renderTeam() {
+    const hasTeam = store.data.team && store.data.team.length > 0;
+
     return `
     <div class="animate-fade-in max-w-6xl mx-auto px-4 py-12">
         <div class="text-center mb-12">
             <h1 class="text-4xl font-bold text-gradient mb-4">专家团队</h1>
             <p class="text-gray-400">汇聚国内外顶尖高校与企业的优秀人才</p>
         </div>
+        ${hasTeam ? `
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             ${store.data.team.map(m => `
                 <div class="glass rounded-xl overflow-hidden card-hover text-center p-6">
-                    <div class="w-32 h-32 mx-auto rounded-full bg-cover bg-center mb-4 border-2 border-blue-500/30" style="background-image: url('${m.photo}')"></div>
-                    <h3 class="text-xl font-bold mb-1">${m.name}</h3>
-                    <p class="text-blue-400 text-sm mb-3">${m.title}</p>
-                    <p class="text-gray-400 text-sm mb-4 leading-relaxed">${m.bio}</p>
+                    <div class="w-32 h-32 mx-auto rounded-full bg-cover bg-center mb-4 border-2 border-blue-500/30" style="background-image: url('${m.photo || ''}')"></div>
+                    <h3 class="text-xl font-bold mb-1">${m.name || ''}</h3>
+                    <p class="text-blue-400 text-sm mb-3">${m.title || ''}</p>
+                    <p class="text-gray-400 text-sm mb-4 leading-relaxed">${m.bio || ''}</p>
                     <div class="flex flex-wrap justify-center gap-2 mb-4">
-                        ${m.research.split('、').map(t => `<span class="px-2 py-1 rounded text-xs bg-white/5 text-gray-300">${t}</span>`).join('')}
+                        ${(m.research || '').split('、').filter(t => t).map(t => `<span class="px-2 py-1 rounded text-xs bg-white/5 text-gray-300">${t}</span>`).join('')}
                     </div>
-                    <a href="mailto:${m.email}" class="text-gray-500 hover:text-blue-400 text-sm transition">
-                        <i class="far fa-envelope mr-1"></i>${m.email}
-                    </a>
+                    ${m.email ? `<a href="mailto:${m.email}" class="text-gray-500 hover:text-blue-400 text-sm transition"><i class="far fa-envelope mr-1"></i>${m.email}</a>` : ''}
                 </div>
             `).join('')}
         </div>
+        ` : emptyState('fa-users', '暂无成员', '管理员可在后台添加专家团队')}
     </div>`;
 }
 
 function renderProjects() {
+    const hasProjects = store.data.projects && store.data.projects.length > 0;
+
     return `
     <div class="animate-fade-in max-w-6xl mx-auto px-4 py-12">
         <div class="text-center mb-12">
             <h1 class="text-4xl font-bold text-gradient mb-4">研发项目</h1>
             <p class="text-gray-400">聚焦算力网络核心技术攻关与系统研发</p>
         </div>
+        ${hasProjects ? `
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             ${store.data.projects.map(p => `
                 <div class="glass rounded-xl overflow-hidden card-hover">
-                    <div class="h-48 bg-cover bg-center relative" style="background-image: url('${p.image}')">
+                    <div class="h-48 bg-cover bg-center relative" style="background-image: url('${p.image || ''}')">
                         <div class="absolute top-4 right-4">
-                            <span class="px-3 py-1 rounded-full text-xs font-medium ${p.status === '已完成' ? 'bg-green-500/80' : 'bg-blue-500/80'} text-white">${p.status}</span>
+                            <span class="px-3 py-1 rounded-full text-xs font-medium ${p.status === '已完成' ? 'bg-green-500/80' : 'bg-blue-500/80'} text-white">${p.status || '进行中'}</span>
                         </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3">${p.title}</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-4">${p.description}</p>
+                        <h3 class="text-xl font-bold mb-3">${p.title || ''}</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">${p.description || ''}</p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            ${p.tags.map(t => `<span class="px-2 py-1 rounded text-xs bg-blue-500/10 text-blue-300 border border-blue-500/20">${t}</span>`).join('')}
+                            ${(p.tags || []).map(t => `<span class="px-2 py-1 rounded text-xs bg-blue-500/10 text-blue-300 border border-blue-500/20">${t}</span>`).join('')}
                         </div>
                         <div class="space-y-2 text-sm text-gray-500">
-                            <div class="flex justify-between"><span>负责人</span><span class="text-gray-300">${p.leader}</span></div>
-                            <div class="flex justify-between"><span>起止时间</span><span class="text-gray-300">${p.startDate} ~ ${p.endDate}</span></div>
+                            <div class="flex justify-between"><span>负责人</span><span class="text-gray-300">${p.leader || ''}</span></div>
+                            <div class="flex justify-between"><span>起止时间</span><span class="text-gray-300">${p.startDate || ''} ~ ${p.endDate || ''}</span></div>
                         </div>
                         <div class="mt-4 pt-4 border-t border-white/5">
                             <div class="flex justify-between text-sm mb-1">
                                 <span class="text-gray-400">项目进度</span>
-                                <span class="text-blue-400 font-medium">${p.progress}%</span>
+                                <span class="text-blue-400 font-medium">${p.progress || 0}%</span>
                             </div>
                             <div class="w-full bg-gray-700 rounded-full h-2">
-                                <div class="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all" style="width: ${p.progress}%"></div>
+                                <div class="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all" style="width: ${p.progress || 0}%"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             `).join('')}
         </div>
+        ` : emptyState('fa-flask', '暂无项目', '管理员可在后台添加研发项目')}
     </div>`;
 }
 
@@ -731,6 +670,8 @@ function renderAdminContent() {
 }
 
 function renderAdminNews() {
+    const hasNews = store.data.news && store.data.news.length > 0;
+
     return `
     <div class="max-w-5xl mx-auto">
         <div class="flex justify-between items-center mb-6">
@@ -739,6 +680,7 @@ function renderAdminNews() {
                 <i class="fas fa-plus mr-2"></i>新增新闻
             </button>
         </div>
+        ${hasNews ? `
         <div class="glass rounded-xl overflow-hidden">
             <div class="overflow-x-auto">
                 <table class="w-full text-left text-sm">
@@ -753,9 +695,9 @@ function renderAdminNews() {
                     <tbody class="divide-y divide-white/5">
                         ${store.data.news.map(n => `
                             <tr class="hover:bg-white/5 transition">
-                                <td class="px-6 py-4 font-medium">${n.title}</td>
-                                <td class="px-6 py-4"><span class="px-2 py-1 rounded text-xs bg-blue-500/20 text-blue-300">${n.category}</span></td>
-                                <td class="px-6 py-4 text-gray-400">${n.date}</td>
+                                <td class="px-6 py-4 font-medium">${n.title || ''}</td>
+                                <td class="px-6 py-4"><span class="px-2 py-1 rounded text-xs bg-blue-500/20 text-blue-300">${n.category || '未分类'}</span></td>
+                                <td class="px-6 py-4 text-gray-400">${n.date || ''}</td>
                                 <td class="px-6 py-4 text-right space-x-2">
                                     <button onclick="editItem('news', ${n.id})" class="text-blue-400 hover:text-blue-300"><i class="fas fa-edit"></i></button>
                                     <button onclick="deleteItem('news', ${n.id})" class="text-red-400 hover:text-red-300"><i class="fas fa-trash"></i></button>
@@ -766,10 +708,13 @@ function renderAdminNews() {
                 </table>
             </div>
         </div>
+        ` : emptyState('fa-newspaper', '暂无新闻', '点击右上角「新增新闻」添加第一条内容')}
     </div>`;
 }
 
 function renderAdminTeam() {
+    const hasTeam = store.data.team && store.data.team.length > 0;
+
     return `
     <div class="max-w-5xl mx-auto">
         <div class="flex justify-between items-center mb-6">
@@ -778,14 +723,15 @@ function renderAdminTeam() {
                 <i class="fas fa-plus mr-2"></i>新增成员
             </button>
         </div>
+        ${hasTeam ? `
         <div class="grid md:grid-cols-2 gap-4">
             ${store.data.team.map(m => `
                 <div class="glass rounded-xl p-4 flex items-center space-x-4 card-hover">
-                    <div class="w-16 h-16 rounded-full bg-cover bg-center flex-shrink-0" style="background-image: url('${m.photo}')"></div>
+                    <div class="w-16 h-16 rounded-full bg-cover bg-center flex-shrink-0" style="background-image: url('${m.photo || ''}')"></div>
                     <div class="flex-1 min-w-0">
-                        <h3 class="font-bold truncate">${m.name}</h3>
-                        <p class="text-sm text-blue-400 truncate">${m.title}</p>
-                        <p class="text-xs text-gray-500 truncate">${m.research}</p>
+                        <h3 class="font-bold truncate">${m.name || ''}</h3>
+                        <p class="text-sm text-blue-400 truncate">${m.title || ''}</p>
+                        <p class="text-xs text-gray-500 truncate">${m.research || ''}</p>
                     </div>
                     <div class="flex space-x-2">
                         <button onclick="editItem('team', ${m.id})" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-blue-500/20 text-blue-400 flex items-center justify-center transition"><i class="fas fa-edit"></i></button>
@@ -794,10 +740,13 @@ function renderAdminTeam() {
                 </div>
             `).join('')}
         </div>
+        ` : emptyState('fa-users', '暂无成员', '点击右上角「新增成员」添加第一位专家')}
     </div>`;
 }
 
 function renderAdminProjects() {
+    const hasProjects = store.data.projects && store.data.projects.length > 0;
+
     return `
     <div class="max-w-5xl mx-auto">
         <div class="flex justify-between items-center mb-6">
@@ -806,13 +755,14 @@ function renderAdminProjects() {
                 <i class="fas fa-plus mr-2"></i>新增项目
             </button>
         </div>
+        ${hasProjects ? `
         <div class="space-y-4">
             ${store.data.projects.map(p => `
                 <div class="glass rounded-xl p-6 card-hover">
                     <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
                         <div>
-                            <h3 class="font-bold text-lg">${p.title}</h3>
-                            <p class="text-sm text-gray-400 mt-1">${p.description}</p>
+                            <h3 class="font-bold text-lg">${p.title || ''}</h3>
+                            <p class="text-sm text-gray-400 mt-1">${p.description || ''}</p>
                         </div>
                         <div class="flex space-x-2 mt-3 md:mt-0">
                             <button onclick="editItem('projects', ${p.id})" class="px-3 py-1.5 rounded-lg bg-blue-500/20 text-blue-400 text-sm hover:bg-blue-500/30 transition"><i class="fas fa-edit mr-1"></i>编辑</button>
@@ -820,37 +770,39 @@ function renderAdminProjects() {
                         </div>
                     </div>
                     <div class="flex flex-wrap gap-4 text-sm text-gray-500">
-                        <span><i class="fas fa-user mr-1"></i>${p.leader}</span>
-                        <span><i class="fas fa-calendar mr-1"></i>${p.startDate} ~ ${p.endDate}</span>
-                        <span class="${p.status === '已完成' ? 'text-green-400' : 'text-blue-400'}"><i class="fas fa-circle mr-1 text-xs"></i>${p.status}</span>
+                        <span><i class="fas fa-user mr-1"></i>${p.leader || ''}</span>
+                        <span><i class="fas fa-calendar mr-1"></i>${p.startDate || ''} ~ ${p.endDate || ''}</span>
+                        <span class="${p.status === '已完成' ? 'text-green-400' : 'text-blue-400'}"><i class="fas fa-circle mr-1 text-xs"></i>${p.status || '进行中'}</span>
                     </div>
                     <div class="mt-3">
-                        <div class="flex justify-between text-xs mb-1"><span>进度</span><span>${p.progress}%</span></div>
-                        <div class="w-full bg-gray-700 rounded-full h-1.5"><div class="bg-gradient-to-r from-blue-500 to-purple-500 h-1.5 rounded-full" style="width: ${p.progress}%"></div></div>
+                        <div class="flex justify-between text-xs mb-1"><span>进度</span><span>${p.progress || 0}%</span></div>
+                        <div class="w-full bg-gray-700 rounded-full h-1.5"><div class="bg-gradient-to-r from-blue-500 to-purple-500 h-1.5 rounded-full" style="width: ${p.progress || 0}%"></div></div>
                     </div>
                 </div>
             `).join('')}
         </div>
+        ` : emptyState('fa-flask', '暂无项目', '点击右上角「新增项目」添加第一个研发项目')}
     </div>`;
 }
 
 function renderAdminAbout() {
-    const about = store.data.about;
+    const about = store.data.about || { title: '', subtitle: '', content: '' };
+
     return `
     <div class="max-w-3xl mx-auto">
         <h2 class="text-2xl font-bold mb-6">关于我们 - 内容编辑</h2>
         <div class="glass rounded-xl p-6 space-y-4">
             <div>
                 <label class="block text-sm text-gray-400 mb-2">页面标题</label>
-                <input type="text" id="aboutTitle" value="${about.title}" class="admin-input w-full px-4 py-2 rounded-lg text-white">
+                <input type="text" id="aboutTitle" value="${about.title || ''}" class="admin-input w-full px-4 py-2 rounded-lg text-white">
             </div>
             <div>
                 <label class="block text-sm text-gray-400 mb-2">副标题</label>
-                <input type="text" id="aboutSubtitle" value="${about.subtitle}" class="admin-input w-full px-4 py-2 rounded-lg text-white">
+                <input type="text" id="aboutSubtitle" value="${about.subtitle || ''}" class="admin-input w-full px-4 py-2 rounded-lg text-white">
             </div>
             <div>
                 <label class="block text-sm text-gray-400 mb-2">正文内容（支持换行）</label>
-                <textarea id="aboutContent" rows="10" class="admin-input w-full px-4 py-2 rounded-lg text-white">${about.content}</textarea>
+                <textarea id="aboutContent" rows="10" class="admin-input w-full px-4 py-2 rounded-lg text-white">${about.content || ''}</textarea>
             </div>
             <div class="pt-4">
                 <button onclick="saveAbout()" class="btn-primary px-6 py-2 rounded-lg text-white"><i class="fas fa-save mr-2"></i>保存</button>
@@ -861,21 +813,22 @@ function renderAdminAbout() {
 
 function renderAdminSettings() {
     const isCfg = store.isConfigured();
+
     return `
     <div class="max-w-3xl mx-auto">
         <h2 class="text-2xl font-bold mb-6">GitHub 云端配置</h2>
 
-        <div class="glass rounded-xl p-6 mb-6 ${isCfg ? 'border border-green-500/20' : 'border border-yellow-500/20'}">
+        <div class="glass rounded-xl p-6 mb-6 ${store.dataLoaded ? 'border border-green-500/20' : 'border border-yellow-500/20'}">
             <div class="flex items-center mb-4">
-                <div class="w-10 h-10 rounded-full ${isCfg ? 'bg-green-500/20' : 'bg-yellow-500/20'} flex items-center justify-center mr-3">
-                    <i class="fas ${isCfg ? 'fa-check-circle text-green-400' : 'fa-exclamation-triangle text-yellow-400'}"></i>
+                <div class="w-10 h-10 rounded-full ${store.dataLoaded ? 'bg-green-500/20' : 'bg-yellow-500/20'} flex items-center justify-center mr-3">
+                    <i class="fas ${store.dataLoaded ? 'fa-check-circle text-green-400' : 'fa-exclamation-triangle text-yellow-400'}"></i>
                 </div>
                 <div>
-                    <h3 class="font-bold">连接状态</h3>
-                    <p class="text-sm text-gray-400">${isCfg ? `已连接到 ${store.github.owner}/${store.github.repo}` : '未配置 GitHub，数据仅保存在当前会话中'}</p>
+                    <h3 class="font-bold">数据状态</h3>
+                    <p class="text-sm text-gray-400">${store.dataLoaded ? '已成功从 data.json 加载数据' : '未检测到 data.json，网站将显示空状态'}</p>
                 </div>
             </div>
-            ${!isCfg ? `<p class="text-sm text-yellow-400/80 mt-2"><i class="fas fa-info-circle mr-1"></i>未配置 GitHub 时，所有修改仅在当前页面有效，刷新后将恢复为默认数据。</p>` : ''}
+            ${!store.dataLoaded ? `<p class="text-sm text-yellow-400/80 mt-2"><i class="fas fa-info-circle mr-1"></i>配置 GitHub 后，在后台添加内容并保存，系统会自动创建 data.json。</p>` : ''}
         </div>
 
         <div class="glass rounded-xl p-6">
@@ -1090,6 +1043,7 @@ async function saveItem() {
         showToast('正在推送至 GitHub...', 'info');
         try {
             await store.syncToGitHub();
+            store.dataLoaded = true;
             showToast(id ? '修改已同步至 GitHub' : '添加已同步至 GitHub');
         } catch(e) {
             showToast('GitHub 同步失败: ' + e.message, 'error');
@@ -1122,6 +1076,7 @@ async function deleteItem(type, id) {
 }
 
 async function saveAbout() {
+    if (!store.data.about) store.data.about = { title: '', subtitle: '', content: '', stats: [] };
     store.data.about.title = document.getElementById('aboutTitle').value;
     store.data.about.subtitle = document.getElementById('aboutSubtitle').value;
     store.data.about.content = document.getElementById('aboutContent').value;
@@ -1130,6 +1085,7 @@ async function saveAbout() {
         showToast('正在推送至 GitHub...', 'info');
         try {
             await store.syncToGitHub();
+            store.dataLoaded = true;
             showToast('保存已同步至 GitHub');
         } catch(e) {
             showToast('GitHub 同步失败: ' + e.message, 'error');
@@ -1152,6 +1108,7 @@ async function syncToGitHub() {
     showToast('正在推送至 GitHub...', 'info');
     try {
         await store.syncToGitHub();
+        store.dataLoaded = true;
         showToast('已成功推送至 GitHub');
     } catch(e) {
         showToast(e.message, 'error');
@@ -1171,16 +1128,9 @@ async function loadFromGitHub() {
 
 // ==================== Init ====================
 window.addEventListener('hashchange', () => router.render());
-window.addEventListener('DOMContentLoaded', () => {
-    if (store.isConfigured()) {
-        store.loadFromGitHub().then(() => {
-            router.render();
-        }).catch(() => {
-            router.render();
-        });
-    } else {
-        router.render();
-    }
+window.addEventListener('DOMContentLoaded', async () => {
+    await store.init();
+    router.render();
 });
 </script>
 </body>
