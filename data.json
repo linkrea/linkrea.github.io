@@ -6,22 +6,22 @@
     "stats": [
       {
         "label": "核心成员",
-        "value": "50+",
+        "value": "20+",
         "icon": "fa-users"
       },
       {
         "label": "科研项目",
-        "value": "120+",
+        "value": "10+",
         "icon": "fa-flask"
       },
       {
         "label": "发表论文",
-        "value": "300+",
+        "value": "20+",
         "icon": "fa-file-alt"
       },
       {
         "label": "专利授权",
-        "value": "80+",
+        "value": "50+",
         "icon": "fa-certificate"
       }
     ]
