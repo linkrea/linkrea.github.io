@@ -67,30 +67,21 @@
     },
     {
       "id": 2,
-      "name": "李思涵",
-      "title": "技术总监 / 教授",
-      "photo": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
-      "bio": "博士生导师，CCF杰出会员。主要研究方向为边缘计算、分布式系统，在TON、JSAC等期刊发表论文50余篇。",
-      "research": "边缘计算、分布式系统",
-      "email": "lish@example.edu.cn"
+      "name": "刘惜吾",
+      "title": "算力网络专业带头人",
+      "photo": "./image/lxw.jpg",
+      "research": "边算力网络、Token运营",
+      "email": "liuxw105@chinaunicom.cn",
+      "bio": "负责算力网络关键技术研发，涵盖新型算力基础设施、超节点技术、广域异构算网一体化调度、跨境算网一体化、跨境数据合规传输、算电协同、绿色算电等技术领域"
     },
     {
       "id": 3,
-      "name": "王浩然",
-      "title": "高级工程师",
-      "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-      "bio": "博士，专注于网络功能虚拟化与SDN技术研究，主导开发了多个开源网络虚拟化平台。",
-      "research": "NFV、SDN、网络虚拟化",
-      "email": "wanghr@example.edu.cn"
-    },
-    {
-      "id": 4,
-      "name": "陈雨薇",
-      "title": "青年研究员",
-      "photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face",
-      "bio": "博士，研究方向为AI驱动的网络资源调度。获ACM SIGCOMM最佳论文提名，主持国家自然科学基金青年项目。",
-      "research": "AI for Networking、资源调度",
-      "email": "chenyw@example.edu.cn"
+      "name": "曾楚轩",
+      "title": "算力平台专业带头人",
+      "photo": ",/iamge/zcx.jpg",
+      "research": "算力平台",
+      "email": "zengchuxuan@chinaunicom.cn",
+      "bio": "负责算力网络平台及产品化研发，涵盖算力标识、算力监测、算力交易及服务平台研发，打造电商化算网一体化平台，提供开箱即用的算网服务产品"
     }
   ],
   "projects": [
