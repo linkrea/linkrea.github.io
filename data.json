@@ -91,6 +91,18 @@
         "任务编排",
         "调度算法"
       ]
+    },
+    {
+      "id": 1786808208027,
+      "title": "跨境算力专区",
+      "description": "",
+      "leader": "刘惜吾",
+      "status": "进行中",
+      "startDate": "2026-06",
+      "endDate": "2027-06",
+      "progress": 50,
+      "image": "",
+      "tags": []
     }
   ]
 }
